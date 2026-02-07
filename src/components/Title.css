@@ -1,0 +1,82 @@
+:root {
+  --title-bg-color: rgba(0, 0, 0, 0.75);
+  --title-hover-bg-color: rgba(0, 0, 0, 0.95);
+}
+
+.title-name-and-pic{
+  gap: 20px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.title-card{
+  gap: 20px;
+  background-color: var(--title-bg-color);
+  padding: 10px;
+  border-left: 5px solid white;
+  border-bottom: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-hghlght {
+  pointer-events: auto;
+  transform: scale(1);
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+  transform-origin: left top;
+}
+
+.title-hghlght:hover {
+  background-color: var(--title-hover-bg-color);
+  transform: scale(1.05);
+  z-index: 3;
+  border-bottom: 5px solid orangered;
+  border-left: 5px solid orangered;
+}
+
+.title-dropshadow{
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 1.0);
+  /* background-color: white; */
+}
+
+.horizontal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 20px; */
+  flex-direction: row;
+}
+
+.vertical{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.profileimage{
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-position: center;
+  object-fit: cover;
+  border: 5px solid white;
+  overflow: hidden;
+  display: block;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1);
+  padding: 0;
+}
+
+.iconshadow{
+  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 1.0))
+          drop-shadow(3px 3px 5px rgba(0, 0, 0, 1.0));
+}
