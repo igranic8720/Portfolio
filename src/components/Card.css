@@ -1,80 +1,98 @@
 :root {
-  --primary-bg-color: rgba(0, 0, 0, 0.75);
+  --primary-bg-color: rgba(0, 0, 0, 0.5);
   --hover-bg-color: rgba(0, 0, 0, 0.95);
   --text-color: #ffffff;
 }
 
-
-@media (min-width: 600px) {
-  .demo-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: var(--primary-bg-color);
-    padding: 25px;
-    border-bottom: 5px solid white;
-    border-left: 5px solid white;
-  }
-  .card-hghlght {
-    pointer-events: auto;
-    transform: scale(1);
-    transition: all 0.4s;
-    position: relative;
-    z-index: 1;
-    transform-origin: left top;
-    max-width: 20%;
-  }
-
-  .card-hghlght:hover {
-    background-color: var(--hover-bg-color);
-    transform: scale(1);
-    z-index: 3;
-    border-bottom: 5px solid orangered;
-    border-left: 5px solid orangered;
-    z-index: 10;
-    max-width: 100%;
-  }
-
-  .content:hover .card-hghlght:not(:hover) {
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
-}
-
-.demo-card{
+/* Base card */
+.demo-card {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
   background-color: var(--primary-bg-color);
-  padding: 25px;
+  padding: 15px;
   border-bottom: 5px solid white;
   border-left: 5px solid white;
 }
 
+.demo-card p {
+  margin: 0;
+}
+
+/* Card interaction */
 .card-hghlght {
+  scroll-margin-top: 0px;
   pointer-events: auto;
-  transition: all 0.4s;
+  transition: all 1s;
   position: relative;
-  z-index: 1;
   transform-origin: left top;
   width: fit-content;
+  max-width: 60%;
   overflow: hidden;
 }
 
-.card-hghlght:hover {
-  background-color: var(--hover-bg-color);
-  z-index: 3;
-  border-bottom: 5px solid orangered;
-  border-left: 5px solid orangered;
-  width: 100%;
-  max-width: 100%;
-}
-
+.card-hghlght:hover,
 .card-hghlght:active {
   background-color: var(--hover-bg-color);
-  z-index: 3;
+  border-bottom: 5px solid orangered;
+  border-left: 5px solid orangered;
+}
+
+/* Expanded state */
+.card-hghlght.card-expanded {
+  background-color: var(--hover-bg-color);
   border-bottom: 5px solid orangered;
   border-left: 5px solid orangered;
   width: 100%;
   max-width: 100%;
+  z-index: 10;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* README animation */
+.card-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+  word-break: break-word;
+  width: 0;
+  overflow: hidden;
+}
+
+.card-content.card-content-expanded {
+  grid-template-rows: 1fr;
+  width: 100%;
+}
+
+.card-content > div {
+  overflow: hidden;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+
+  .card-hghlght {
+    max-width: 30%;
+  }
+
+  .card-hghlght.card-expanded {
+    max-width: 100%;
+  }
 }
