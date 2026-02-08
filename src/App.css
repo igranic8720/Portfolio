@@ -14,6 +14,7 @@
   max-width: 1200px;
   box-sizing: border-box;
   overflow-x: hidden;
+  pointer-events: none;
 }
 
 .background h1 {
@@ -40,7 +41,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  z-index: -2;
+  z-index: -3;
+  pointer-events: none;
 }
 
 .background:after {
@@ -53,7 +55,8 @@
   position: fixed;
   top: -110%;
   width: 300%;
-  z-index: -1;
+  z-index: 1;
+  pointer-events: none;
 }
 
 @keyframes grain {
