@@ -1,6 +1,8 @@
 import './Card.css'
 import { useState, useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown';
+import remarkGemoji from 'remark-gemoji';
+import remarkGfm from 'remark-gfm';
 import { FaStar, FaCodeBranch, FaGithub, FaLink, FaGithubSquare, FaArrowAltCircleRight, FaSquare, FaArrowsAlt, FaShare, FaShareAlt } from 'react-icons/fa';
 
 function GitHubCardItem({ project, expanded, onToggle }) {
@@ -34,7 +36,7 @@ function GitHubCardItem({ project, expanded, onToggle }) {
       <div className={`card-content ${expanded ? 'card-content-expanded' : ''}`}>
         <div>
           {project.readme && (
-            <ReactMarkdown>{project.readme}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGemoji, remarkGfm]}>{project.readme}</ReactMarkdown>
           )}
         </div>
       </div>
@@ -75,7 +77,8 @@ export function GitHubCard() {
                 `https://api.github.com/repos/igranic8720/${repo.name}/contents/README.md`
               );
               const file = await res.json();
-              const readme = file.content ? atob(file.content) : null;
+              const readme = file.content ? new TextDecoder().decode(Uint8Array.from(atob(file.content), c => c.charCodeAt(0)))
+                : null;
               return { ...repo, readme };
             } catch {
               return { ...repo, readme: null };
