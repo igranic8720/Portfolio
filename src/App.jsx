@@ -7,23 +7,20 @@ function App() {
   return (
     <>
       <div className='background'>
-        <Title/>
-        <h1>What I'm Working on</h1>
+        <Title>
+          <p>
+            Final-year Computer Science student at Conestoga College with experience in cybersecurity and VR development.
+          </p>
+          </Title>
+        <h2>What I'm Working on</h2>
         <div>
-          <Card>
-            <h1>LinkedIn</h1>
-          </Card>
-          <Card>
-            <h1>GitHub</h1>
-          </Card>
-          <Card>
-            <h1>Stuff</h1>
-          </Card>
+          <GitHubCard />
         </div>
+        <footer className="site-footer">
+          <p>© {new Date().getFullYear()} Ivan Granic — All rights reserved</p>
+        </footer>
       </div>
-      <div>
-        <GitHubCard />
-      </div>
+      
     </>
   )
 }
