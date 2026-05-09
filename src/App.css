@@ -20,7 +20,7 @@
 
 .projects-section {
   width: 100%;
-  margin-top: 48px;
+  margin-top: 12px;
 }
 
 .section-heading {
@@ -28,11 +28,16 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #e4dfd8;
+  font-family: 'JetBrains Mono', monospace;
   background: rgba(0, 0, 0, 0.80);
-  border-top: 3px solid orangered;
   border-left: 3px solid orangered;
   padding: 14px 20px;
   margin: 0 0 12px;
+}
+
+.section-heading::before {
+  content: '$ ';
+  color: orangered;
 }
 
 .projects-grid {
