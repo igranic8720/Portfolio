@@ -1,37 +1,35 @@
 import './Title.css'
 import { FaEnvelope, FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 
-export default function Title(props) {
-  const children = props.children;
-
+export default function Title({ children }) {
   return (
-    <div className='title-dropshadow vertical'>
-      <div className='horizontal title-name-and-pic'>
-        <img src='pfp.jpg' className='profileimage' />
-        <div>
+    <div className="title-hero">
+      <div className="hero-content">
+        <img src="pfp.jpg" className="hero-pfp" alt="Ivan Granic" />
+        <div className="hero-text">
           <h1>Ivan Granic</h1>
-          <p>Software Developer & Cyber Security Professional</p>
+          <p className="hero-subtitle">Software Developer & Cyber Security Professional</p>
+          {children && <div className="hero-bio">{children}</div>}
         </div>
+        <nav className="hero-links">
+          <a href="https://www.linkedin.com/in/ivangranic" target="_blank" rel="noopener noreferrer" className="hero-link">
+            <FaLinkedin size={20} />
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/igranic8720" target="_blank" rel="noopener noreferrer" className="hero-link">
+            <FaGithub size={20} />
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:ivanmattgranic@outlook.com" className="hero-link">
+            <FaEnvelope size={20} />
+            <span>Email</span>
+          </a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hero-link">
+            <FaFileAlt size={20} />
+            <span>Resume</span>
+          </a>
+        </nav>
       </div>
-      <div className='horizontal'>
-        <a href="https://www.linkedin.com/in/ivangranic" target="_blank" rel="noopener noreferrer" className='title-card title-hghlght horizontal'>
-          <FaLinkedin size={30} color="#ffffff" className='iconshadow' />
-          <h2>LinkedIn</h2>
-        </a>
-        <a href="https://github.com/igranic8720" target="_blank" rel="noopener noreferrer" className='title-card title-hghlght horizontal'>
-          <FaGithub size={30} color="#ffffff" className='iconshadow' />
-          <h2>GitHub</h2>
-        </a>
-        <a href="mailto:ivanmattgranic@outlook.com" className='title-card title-hghlght horizontal'>
-          <FaEnvelope size={30} color="#ffffff" className='iconshadow' />
-          <h2>Email</h2>
-        </a>
-        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className='title-card title-hghlght horizontal'>
-          <FaFileAlt size={30} color="#ffffff" className='iconshadow' />
-          <h2>Resume</h2>
-        </a>
-      </div>
-      {children}
     </div>
   );
 }

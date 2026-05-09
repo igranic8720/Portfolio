@@ -12,10 +12,12 @@ function App() {
             Final-year Computer Science student at Conestoga College with experience in cybersecurity and VR development.
           </p>
           </Title>
-        <h2>What I'm Working on</h2>
-        <div>
-          <GitHubCard />
-        </div>
+        <section className="projects-section">
+          <h2 className="section-heading">What I'm Working on</h2>
+          <div className="projects-grid">
+            <GitHubCard />
+          </div>
+        </section>
         <footer className="site-footer">
           <p>© {new Date().getFullYear()} Ivan Granic — All rights reserved</p>
         </footer>

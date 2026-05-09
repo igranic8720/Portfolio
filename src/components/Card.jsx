@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import ReactMarkdown from 'react-markdown';
 import remarkGemoji from 'remark-gemoji';
 import remarkGfm from 'remark-gfm';
-import { FaStar, FaCodeBranch, FaGithub, FaLink, FaGithubSquare, FaArrowAltCircleRight, FaSquare, FaArrowsAlt, FaShare, FaShareAlt } from 'react-icons/fa';
+import { FaStar, FaCodeBranch, FaGithub } from 'react-icons/fa';
 
 function GitHubCardItem({ project, expanded, onToggle }) {
   const cardRef = useRef(null);
@@ -20,17 +20,18 @@ function GitHubCardItem({ project, expanded, onToggle }) {
     >
       <div className="card-row">
         <h2>{project.name}</h2>
-            <a href={project.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="card-stats"
-            >
-                <FaStar size={14} /> {project.stargazers_count}
-                <FaCodeBranch size={14} /> {project.forks_count}
-                <FaGithub size={14} />
-                <FaLink size={14} />
-            </a>
+        {project.language && <span className="card-lang">{project.language}</span>}
+        <a
+          href={project.html_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="card-stats"
+        >
+          <FaStar size={13} /> {project.stargazers_count}
+          <FaCodeBranch size={13} /> {project.forks_count}
+          <FaGithub size={13} />
+        </a>
       </div>
       <p>{project.description || 'No description'}</p>
       <div className={`card-content ${expanded ? 'card-content-expanded' : ''}`}>

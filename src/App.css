@@ -4,7 +4,7 @@
 .site-footer {
   text-align: center;
   padding: 40px 0 20px;
-  opacity: 0.6;
+  opacity: 0.5;
   font-size: 0.85rem;
 }
 
@@ -14,19 +14,34 @@
   max-width: 1200px;
   box-sizing: border-box;
   overflow-x: hidden;
+  padding: 60px 80px 60px;
 }
 
-.background h1 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+.projects-section {
+  width: 100%;
+  margin-top: 48px;
 }
 
-.background > div {
-  display: flex;
-  flex-direction: column;
+.section-heading {
+  font-size: 1.4em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #e4dfd8;
+  background: rgba(0, 0, 0, 0.80);
+  border-top: 3px solid orangered;
+  border-left: 3px solid orangered;
+  padding: 14px 20px;
+  margin: 0 0 12px;
 }
 
-.background::before{
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.background::before {
   content: "";
   position: fixed;
   top: 0;
@@ -71,14 +86,13 @@
 
 @media only screen and (max-width: 768px) {
   .background {
-    padding: 5vw;
+    padding: 5vw 5vw 10vw;
   }
   .background::before {
     background-attachment: scroll;
   }
 
-  .background h1 {
-    margin-top: 30px;
-    font-size: 1.8em;
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }

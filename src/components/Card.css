@@ -1,56 +1,52 @@
 :root {
-  --primary-bg-color: rgba(0, 0, 0, 0.5);
-  --hover-bg-color: rgba(0, 0, 0, 0.95);
-  --text-color: #ffffff;
+  --card-bg: rgba(0, 0, 0, 0.80);
+  --card-bg-hover: rgba(0, 0, 0, 0.92);
 }
 
-/* Base card */
 .demo-card {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 10px;
-  background-color: var(--primary-bg-color);
-  padding: 15px;
-  border-bottom: 5px solid white;
-  border-left: 5px solid white;
+  gap: 12px;
+  background-color: var(--card-bg);
+  padding: 18px 20px;
+  border-top: 3px solid transparent;
+  border-left: 3px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
 }
 
-.demo-card p {
+.demo-card > p {
   margin: 0;
+  opacity: 0.82;
 }
 
-/* Card interaction */
 .card-hghlght {
-  scroll-margin-top: 0px;
   pointer-events: auto;
-  transition: background-color 0.3s, border-color 0.3s, max-width 1s ease;
   position: relative;
-  transform-origin: left top;
-  max-width: 100%;  /* Set a high value that won't constrain most cards */
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card-hghlght:hover,
 .card-hghlght:active {
-  background-color: var(--hover-bg-color);
-  border-bottom: 5px solid orangered;
-  border-left: 5px solid orangered;
+  background-color: var(--card-bg-hover);
+  border-top: 3px solid orangered;
+  border-left: 3px solid orangered;
+  transform: scale(1.02);
+  z-index: 2;
 }
 
-/* Expanded state */
 .card-hghlght.card-expanded {
-  background-color: var(--hover-bg-color);
-  border-bottom: 5px solid orangered;
-  border-left: 5px solid orangered;
-  width: 100%;
-  max-width: 100%;
+  background-color: var(--card-bg-hover);
+  border-top: 3px solid orangered;
+  border-left: 3px solid orangered;
+  grid-column: 1 / -1;
   z-index: 10;
-  align-items: flex-start;
   box-sizing: border-box;
+  transform: none;
 }
 
-/* README animation */
+/* README expand animation */
 .card-content {
   display: grid;
   grid-template-rows: 0fr;
@@ -62,36 +58,67 @@
 
 .card-content.card-content-expanded {
   grid-template-rows: 1fr;
-  width: 100%;
 }
 
 .card-content > div {
   overflow: hidden;
+  padding-top: 4px;
+}
+
+.card-content h1,
+.card-content h2,
+.card-content h3 {
+  margin: 1em 0 0.35em;
+}
+
+.card-content p {
+  margin: 0 0 0.6em;
+}
+
+.card-content ul,
+.card-content ol {
+  margin: 0 0 0.6em;
+  padding-left: 1.5em;
+}
+
+.card-content li {
+  margin-bottom: 0.25em;
 }
 
 .card-row {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-row h2 {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: 600;
+}
+
+.card-lang {
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: orangered;
+  opacity: 0.75;
+  flex-shrink: 0;
 }
 
 .card-stats {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   white-space: nowrap;
-  font-size: 0.9em;
-  opacity: 0.8;
+  font-size: 0.8em;
+  opacity: 0.55;
+  margin-left: auto;
+  transition: opacity 0.2s;
 }
 
-/* Desktop */
-@media only screen and (min-width: 768px) {
-
-  .card-hghlght {
-    max-width: 40%;
-  }
-
-  .card-hghlght.card-expanded {
-    max-width: 100%;
-  }
+.card-stats:hover {
+  opacity: 0.85;
 }
