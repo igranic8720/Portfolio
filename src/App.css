@@ -1,6 +1,7 @@
 .background {
   margin: 0 auto;
   min-height: 100vh;
+  min-height: 100dvh;
   max-width: 1200px;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -13,7 +14,9 @@
   top: 0;
   left: 0;
   width: 100vw;
+  width: 100dvw;
   height: 100vh;
+  height: 100dvh;
   /* background-color: var(--bg-page); */
   background: radial-gradient(ellipse at center, var(--bg-page), #000000);
   z-index: -2;
