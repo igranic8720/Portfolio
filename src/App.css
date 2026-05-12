@@ -8,7 +8,7 @@
   padding: 12px 80px 60px;
 }
 
-.background::before {
+body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -17,12 +17,11 @@
   width: 100dvw;
   height: 100vh;
   height: 100dvh;
-  /* background-color: var(--bg-page); */
   background: radial-gradient(ellipse at center, var(--bg-page), #000000);
   z-index: -2;
 }
 
-.background::after {
+body::after {
   animation: grain 8s steps(5) infinite;
   background-image: url('/paper-pattern2.png');
   content: "";
