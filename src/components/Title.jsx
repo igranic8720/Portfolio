@@ -28,7 +28,7 @@ export default function Title() {
           <h1>{displayed}<span className="name-cursor">_</span></h1>
           <p className="hero-subtitle">Software Developer & Cyber Security Professional</p>
           <div className="hero-bio">
-            <p>Final-year Computer Science student at Conestoga College with experience in cybersecurity and VR development.</p>
+            <p>Software developer with a background in cybersecurity, VR development, and systems-level programming in C++ and OpenGL.</p>
           </div>
         </div>
         <nav className="hero-links">
