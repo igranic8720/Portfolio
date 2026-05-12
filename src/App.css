@@ -1,49 +1,10 @@
-#root {
-}
-
-.site-footer {
-  text-align: center;
-  padding: 40px 0 20px;
-  opacity: 0.5;
-  font-size: 0.85rem;
-}
-
 .background {
   margin: 0 auto;
   min-height: 100vh;
   max-width: 1200px;
   box-sizing: border-box;
   overflow-x: hidden;
-  padding: 60px 80px 60px;
-}
-
-
-.projects-section {
-  width: 100%;
-  margin-top: 12px;
-}
-
-.section-heading {
-  font-size: 1.4em;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #e4dfd8;
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(0, 0, 0, 0.80);
-  border-left: 3px solid orangered;
-  padding: 14px 20px;
-  margin: 0 0 12px;
-}
-
-.section-heading::before {
-  content: '$ ';
-  color: orangered;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  padding: 12px 80px 60px;
 }
 
 .background::before {
@@ -51,19 +12,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/bg2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-color: var(--bg-page); */
+  background: radial-gradient(ellipse at center, var(--bg-page), #000000);
   z-index: -2;
 }
 
-.background:after {
+.background::after {
   animation: grain 8s steps(5) infinite;
   background-image: url('/paper-pattern2.png');
   content: "";
@@ -77,27 +33,20 @@
 }
 
 @keyframes grain {
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 35%) }
-  90% { transform:translate(-10%, 10%) }
+  0%, 100% { transform: translate(0, 0) }
+  10%       { transform: translate(-5%, -10%) }
+  20%       { transform: translate(-15%, 5%) }
+  30%       { transform: translate(7%, -25%) }
+  40%       { transform: translate(-5%, 25%) }
+  50%       { transform: translate(-15%, 10%) }
+  60%       { transform: translate(15%, 0%) }
+  70%       { transform: translate(0%, 15%) }
+  80%       { transform: translate(3%, 35%) }
+  90%       { transform: translate(-10%, 10%) }
 }
 
 @media only screen and (max-width: 768px) {
   .background {
     padding: 5vw 5vw 10vw;
-  }
-  .background::before {
-    background-attachment: scroll;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
   }
 }

@@ -1,15 +1,35 @@
+import { useState, useEffect } from 'react'
 import './Title.css'
 import { FaEnvelope, FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 
-export default function Title({ children }) {
+export default function Title() {
+  const full = 'Ivan Granic'
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const timer = setInterval(() => {
+      i++
+      setDisplayed(full.slice(0, i))
+      if (i >= full.length) {
+        clearInterval(timer)
+        setDone(true)
+      }
+    }, 110)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div className="title-hero">
       <div className="hero-content">
         <img src="pfp.jpg" className="hero-pfp" alt="Ivan Granic" />
         <div className="hero-text">
-          <h1>Ivan Granic</h1>
+          <h1>{displayed}<span className="name-cursor">_</span></h1>
           <p className="hero-subtitle">Software Developer & Cyber Security Professional</p>
-          {children && <div className="hero-bio">{children}</div>}
+          <div className="hero-bio">
+            <p>Final-year Computer Science student at Conestoga College with experience in cybersecurity and VR development.</p>
+          </div>
         </div>
         <nav className="hero-links">
           <a href="https://www.linkedin.com/in/ivangranic" target="_blank" rel="noopener noreferrer" className="hero-link">

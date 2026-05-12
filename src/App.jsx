@@ -1,30 +1,18 @@
 import './App.css'
 import Title from './components/Title'
-import Card, { GitHubCard } from './components/Card'
+import EducationSection from './components/EducationSection'
+import ExperienceSection from './components/ExperienceSection'
+import ProjectsSection from './components/ProjectsSection'
+import Footer from './components/Footer'
 
-function App() {
-  
+export default function App() {
   return (
-    <>
-      <div className='background'>
-        <Title>
-          <p>
-            Final-year Computer Science student at Conestoga College with experience in cybersecurity and VR development.
-          </p>
-          </Title>
-        <section className="projects-section">
-          <h2 className="section-heading">What I'm Working on</h2>
-          <div className="projects-grid">
-            <GitHubCard />
-          </div>
-        </section>
-        <footer className="site-footer">
-          <p>© {new Date().getFullYear()} Ivan Granic — All rights reserved</p>
-        </footer>
-      </div>
-      
-    </>
+    <div className="background">
+      <Title />
+      <ExperienceSection />
+      <ProjectsSection />
+      <EducationSection />
+      <Footer />
+    </div>
   )
 }
-
-export default App

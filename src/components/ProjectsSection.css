@@ -1,0 +1,44 @@
+.projects-section {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.section-heading {
+  font-size: 1.4em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--card-bg);
+  border-left: 3px solid var(--accent);
+  padding: 14px 20px;
+  margin: 0 0 12px;
+}
+
+.section-heading::before {
+  content: '$ ';
+  color: var(--accent);
+}
+
+.typing-cursor {
+  color: var(--accent);
+  margin-left: 2px;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  .projects-grid > .demo-card {
+    flex-basis: 100% !important;
+  }
+}

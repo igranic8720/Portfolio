@@ -1,10 +1,24 @@
 :root {
+  /* ── Colours ──────────────────────────────────────────── */
+  --accent:        aqua;
+
+  --text:          ghostwhite;
+  --text-muted:    rgba(228, 223, 216, 0.85);
+
+  --bg-page:       #b3faff;
+  --card-bg:       rgba(0, 0, 0, 0.80);
+  --card-bg-hover: rgba(0, 0, 0, 0.92);
+
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-dim:    rgba(255, 255, 255, 0.08);
+  /* ────────────────────────────────────────────────────── */
+
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: dark;
-  color: #e4dfd8;
-  background-color: #0a0a0a;
+  color: var(--text);
+  background-color: var(--bg-page);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,12 +35,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 a {
   font-weight: 500;
-  color: #e4dfd8;
+  color: var(--text);
   text-decoration: none;
 }
 
 a:hover {
-  color: orangered;
+  color: var(--accent);
 }
 
 body {
