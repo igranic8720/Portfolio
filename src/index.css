@@ -18,7 +18,7 @@
   font-weight: 400;
   color-scheme: dark;
   color: var(--text);
-  background-color: transparent;
+  background-color: #000000;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -41,11 +41,6 @@ a {
 
 a:hover {
   color: var(--accent);
-}
-
-html {
-  background: radial-gradient(ellipse at center, var(--bg-page), #000000);
-  min-height: 100%;
 }
 
 body {
