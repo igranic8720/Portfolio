@@ -7,7 +7,7 @@
 }
 
 .section-content--visible {
-  animation: spawn-in 0.7s ease forwards;
+  animation: spawn-in 1.4s ease forwards;
 }
 
 @keyframes spawn-in {
