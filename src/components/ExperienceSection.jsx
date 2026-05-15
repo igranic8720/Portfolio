@@ -6,7 +6,7 @@ const experience = [
     role: 'Security Analyst',
     company: 'Magnet Forensics',
     date: 'August 2022 — August 2025',
-    description: 'Triaged and worked to resolve security and malware incidents across SentinelOne, Defender 365, and CrowdStrike. Participated in creation of Data Loss Prevention(DLP) policies, managed DNS entry updates, and  handled vendor/asset operation via Jira and OneTrust. Assisted in SOC2 and ISO 27001 certification.',
+    description: 'Triaged and worked to resolve security incidents across SentinelOne, Defender 365, and CrowdStrike.  Resolved Malware incidents and peformed Root Cause Analysis. Participated in creation of Data Loss Prevention(DLP) policies, managed DNS entry updates, and  handled vendor/asset operation via Jira and OneTrust. Assisted in SOC2 and ISO 27001 certification.',
   },
   {
     role: 'Virtual Reality Software Developer',
