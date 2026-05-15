@@ -2,19 +2,14 @@ import { useState, useEffect } from 'react'
 import GitHubCardItem from './GitHubCardItem'
 
 const CACHE_DURATION = 1000 * 60 * 60
+// 1000 ms (1 second) * 60 * 60 = 60 mins
 
 const PINNED_REPOS = [
-  { name: 'Force-Directed-Graph-for-BFS-Algorithm', gif: '/thing.gif' },
-  // { name: 'your-repo', gif: '/demos/your-repo.gif' },
+  { path: 'igranic8720/Force-Directed-Graph-for-BFS-Algorithm', gif: '/BFS.gif' },
+  // { path: 'PhillipKellogg/heat.pics', gif: '/thing.gif' },
+  { path: 'igranic8720/Portfolio', gif: '/Portfolio.gif' },
+  // { path: 'other-user/their-repo', gif: '/demos/their-repo.gif' },
 ]
-
-const mergeGifs = (repoList) =>
-  PINNED_REPOS
-    .map(({ name, gif = null }) => {
-      const repo = repoList.find(r => r.name === name)
-      return repo ? { ...repo, gif } : null
-    })
-    .filter(Boolean)
 
 export default function GitHubCard() {
   const [projects, setProjects] = useState([])
@@ -31,40 +26,40 @@ export default function GitHubCard() {
 
     if (cached && cachedTime && Date.now() - Number(cachedTime) < CACHE_DURATION) {
       const cachedRepos = JSON.parse(cached)
-      const allPinnedPresent = PINNED_REPOS.every(({ name }) => cachedRepos.some(r => r.name === name))
+      const allPinnedPresent = PINNED_REPOS.every(({ path, gif }) =>
+        cachedRepos.some(r => r.html_url?.endsWith(path) && r.gif === gif)
+      )
       if (allPinnedPresent) {
-        setProjects(mergeGifs(cachedRepos))
+        setProjects(cachedRepos)
         setLoading(false)
         return
       }
     }
 
-    fetch('https://api.github.com/users/igranic8720/repos?per_page=100')
-      .then(res => res.json())
-      .then(async data => {
-        const all = Array.isArray(data) ? data : []
-        const repos = PINNED_REPOS
-          .map(({ name }) => all.find(r => r.name === name))
-          .filter(Boolean)
-        const withReadmes = await Promise.all(
-          repos.map(async repo => {
-            try {
-              const res = await fetch(
-                `https://api.github.com/repos/igranic8720/${repo.name}/contents/README.md`
-              )
-              const file = await res.json()
-              const readme = file.content
-                ? new TextDecoder().decode(Uint8Array.from(atob(file.content), c => c.charCodeAt(0)))
-                : null
-              return { ...repo, readme }
-            } catch {
-              return { ...repo, readme: null }
-            }
-          })
-        )
-        localStorage.setItem('github-projects', JSON.stringify(withReadmes))
+    Promise.all(
+      PINNED_REPOS.map(async ({ path, gif }) => {
+        try {
+          const [repoRes, readmeRes] = await Promise.all([
+            fetch(`https://api.github.com/repos/${path}`),
+            fetch(`https://api.github.com/repos/${path}/readme`),
+          ])
+          if (!repoRes.ok) return null
+          const { id, name, html_url, language, stargazers_count, forks_count, description } = await repoRes.json()
+          const readmeFile = await readmeRes.json()
+          const readme = readmeFile.content
+            ? new TextDecoder().decode(Uint8Array.from(atob(readmeFile.content), c => c.charCodeAt(0)))
+            : null
+          return { id, name, html_url, language, stargazers_count, forks_count, description, readme, gif }
+        } catch {
+          return null
+        }
+      })
+    )
+      .then(results => {
+        const fetched = results.filter(Boolean)
+        localStorage.setItem('github-projects', JSON.stringify(fetched))
         localStorage.setItem('github-projects-time', Date.now().toString())
-        setProjects(mergeGifs(withReadmes))
+        setProjects(fetched)
         setLoading(false)
       })
       .catch(err => {

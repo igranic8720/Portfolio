@@ -9,7 +9,7 @@
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  padding: 36px;
+  padding: 36px 36px 16px;
 }
 
 .hero-pfp {
@@ -84,7 +84,6 @@
 }
 
 .hero-link {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -93,21 +92,18 @@
   font-weight: 600;
   color: var(--text-muted);
   border-left: 3px solid transparent;
-  border-top: 3px solid transparent;
-  margin-left: -1px;
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s, transform 0.2s;
   white-space: nowrap;
-  text-shadow: none;
   letter-spacing: 0.02em;
-  overflow: hidden;
 }
 
 .hero-link:hover {
   color: var(--text);
   border-left-color: var(--accent);
-  border-top-color: var(--accent);
-  transform: scale(1.06);
-  box-shadow: inset 12px 12px 10px color-mix(in srgb, var(--accent) 30%, transparent);
+  border-bottom-color: var(--accent);
+  background-color: var(--card-bg-hover);
+  transform: scale(1.04);
 }
 
 .hero-link svg {
@@ -158,19 +154,7 @@
     flex-direction: column;
     align-items: center;
     gap: 6px;
-    border-left: 3px solid transparent;
-    border-top: 3px solid transparent;
-    border-bottom: none;
-    margin-left: 0;
     padding: 12px 8px;
     font-size: 0.78em;
-  }
-
-  .hero-link:hover {
-    border-left-color: var(--accent);
-    border-top-color: var(--accent);
-    border-bottom-color: transparent;
-    transform: scale(1.06);
-    box-shadow: inset 12px 12px 10px color-mix(in srgb, var(--accent) 30%, transparent);
   }
 }

@@ -1,21 +1,22 @@
 .demo-card {
+  scroll-margin-top: 48px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 12px;
   background-color: var(--card-bg);
   padding: 18px 20px;
-  border-top: 3px solid transparent;
   border-left: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   flex: 1 1 calc(50% - 6px);
   min-width: 0;
   box-sizing: border-box;
+  animation: spawn-in 0.7s ease backwards;
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    flex-basis 0.45s ease;
+    flex-basis 1.5s ease;
 }
 
 .demo-card > p {
@@ -33,17 +34,16 @@
 .card-hghlght:hover,
 .card-hghlght:active {
   background-color: var(--card-bg-hover);
-  border-top: 3px solid var(--accent);
-  border-left: 3px solid var(--accent);
+  border-left-color: var(--accent);
+  border-bottom-color: var(--accent);
   transform: scale(1.02);
-  box-shadow: inset 12px 12px 10px color-mix(in srgb, var(--accent) 25%, transparent);
   z-index: 2;
 }
 
 .card-hghlght.card-expanded {
   background-color: var(--card-bg-hover);
-  border-top: 3px solid var(--accent);
-  border-left: 3px solid var(--accent);
+  border-left-color: var(--accent);
+  border-bottom-color: var(--accent);
   flex-basis: 100%;
   z-index: 10;
   transform: scale(1);
@@ -53,7 +53,7 @@
 .card-content {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s ease;
+  transition: grid-template-rows 1.5s ease;
   word-break: break-word;
   width: 100%;
   overflow: hidden;
@@ -65,27 +65,111 @@
 
 .card-content > div {
   overflow: hidden;
-  padding-top: 4px;
+  padding: 4px 0 0 4px;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  margin-top: 4px;
 }
 
 .card-content h1,
 .card-content h2,
 .card-content h3 {
   margin: 1em 0 0.35em;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 600;
+  opacity: 0.9;
 }
+
+.card-content h1 { font-size: 1.05em; }
+.card-content h2 { font-size: 0.95em; }
+.card-content h3 { font-size: 0.88em; }
 
 .card-content p {
   margin: 0 0 0.6em;
+  opacity: 0.85;
+  line-height: 1.6;
 }
 
 .card-content ul,
 .card-content ol {
   margin: 0 0 0.6em;
   padding-left: 1.5em;
+  opacity: 0.85;
 }
 
 .card-content li {
   margin-bottom: 0.25em;
+  line-height: 1.5;
+}
+
+.card-content code {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.82em;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+}
+
+.card-content pre {
+  background: color-mix(in srgb, var(--accent) 8%, var(--card-bg));
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  overflow-x: auto;
+  margin: 0 0 0.8em;
+}
+
+.card-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  opacity: 0.9;
+  font-size: 0.82em;
+}
+
+.card-content a {
+  color: var(--accent);
+  opacity: 0.8;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: opacity 0.2s;
+}
+
+.card-content a:hover {
+  opacity: 1;
+}
+
+.card-content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 0 0 0.6em;
+  padding: 4px 12px;
+  opacity: 0.7;
+}
+
+.card-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 0.8em;
+  font-size: 0.88em;
+}
+
+.card-content th {
+  text-align: left;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  padding: 6px 12px;
+}
+
+.card-content td {
+  padding: 5px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+  opacity: 0.85;
+}
+
+.card-content tr:last-child td {
+  border-bottom: none;
 }
 
 .card-row {
@@ -185,15 +269,16 @@
   height: auto;
   display: block;
   border-left: 3px solid transparent;
-  border-top: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   filter: grayscale(1);
   transition: filter 0.3s ease, border-color 0.3s ease;
 }
 
-.card-hghlght:hover .card-gif {
+.card-hghlght:hover .card-gif,
+.card-hghlght.card-expanded .card-gif {
   filter: grayscale(0);
   border-left-color: var(--accent);
-  border-top-color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .card-expand-hint {

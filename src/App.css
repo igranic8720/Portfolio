@@ -1,17 +1,23 @@
+#experience,
+#projects,
+#education,
+#certifications {
+  scroll-margin-top: 48px;
+}
+
 .background {
   margin: 0 auto;
   min-height: 100vh;
   min-height: 100dvh;
   max-width: 1200px;
   box-sizing: border-box;
-  overflow-x: hidden;
   padding: 12px 80px 60px;
 }
 
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -150px;
   background: radial-gradient(ellipse at center, var(--bg-page), #000000);
   z-index: -2;
 }

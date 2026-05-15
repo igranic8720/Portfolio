@@ -16,7 +16,15 @@
 }
 
 .section-heading::before {
-  content: '$ ';
+  content: '~/';
+  color: var(--accent);
+}
+
+.section-heading--cmd::before {
+  content: none;
+}
+
+.cmd-prefix {
   color: var(--accent);
 }
 
@@ -33,12 +41,6 @@
 
 .projects-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
-}
-
-@media only screen and (max-width: 768px) {
-  .projects-grid > .demo-card {
-    flex-basis: 100% !important;
-  }
 }

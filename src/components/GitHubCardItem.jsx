@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import './Card.css'
 import ReactMarkdown from 'react-markdown'
 import remarkGemoji from 'remark-gemoji'
@@ -5,10 +6,21 @@ import remarkGfm from 'remark-gfm'
 import { FaStar, FaCodeBranch, FaGithub, FaChevronDown } from 'react-icons/fa'
 
 export default function GitHubCardItem({ project, expanded, onToggle }) {
+  const cardRef = useRef(null)
+
+  function handleClick() {
+    if (window.getSelection()?.toString()) return
+    if (!expanded) {
+      cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    onToggle()
+  }
+
   return (
     <div
+      ref={cardRef}
       className={`demo-card card-hghlght ${expanded ? 'card-expanded' : ''}`}
-      onClick={onToggle}
+      onClick={handleClick}
     >
       <div className="card-main">
         <div className="card-info">

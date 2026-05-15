@@ -1,0 +1,22 @@
+.section-heading--cmd::before {
+  content: none;
+}
+
+.cmd-prefix {
+  color: var(--accent);
+}
+
+.section-content--visible {
+  animation: spawn-in 0.7s ease forwards;
+}
+
+@keyframes spawn-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

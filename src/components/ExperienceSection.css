@@ -45,6 +45,7 @@
   gap: 6px;
   cursor: default;
   transition: filter 0.2s;
+  animation: spawn-in 0.7s ease backwards;
 }
 
 .entry-card:hover {
